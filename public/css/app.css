@@ -4,27 +4,50 @@ body {
   color: #191313;
 }
 
-ul li:last-child a {
+.navcart {
   background-color: #EC191F;
+  border-radius: 35px;
 }
-ul li:last-child a:hover {
+.navcart:hover {
   background: #F63822;
 }
 
-nav li a {
+#navbarSupportedContent li a {
   transition: all 0.3s ease-in-out;
   font-weight: 700;
 }
-nav li a:hover {
+#navbarSupportedContent li a:hover {
   color: #EC191F;
 }
 
+.menutext {
+  text-align: center;
+}
+
+@media only screen and (max-width: 991px) {
+  .menutext {
+    border-bottom: 5px solid #EC191F;
+  }
+
+  .navcart {
+    background-color: #EC191F;
+    border-radius: 35px;
+    margin-top: 8px;
+  }
+  .navcart:hover {
+    background: #F63822;
+  }
+}
+.menutextcart {
+  justify-content: center;
+}
+
 section.hero {
-  background-color: #ccc;
+  background-color: #dddddd;
 }
 
 .size {
-  background-color: #ccc;
+  background-color: #dddddd;
 }
 
 .add-to-cart {
@@ -36,4 +59,42 @@ section.hero {
   background: #EC191F;
   border-color: #fff;
   color: #fff;
+}
+
+.btn-primary {
+  background: #EC191F;
+  transition: all 0.3s ease-in-out;
+}
+.btn-primary:hover {
+  background: #F63822;
+}
+
+.amaount {
+  color: #EC191F;
+}
+
+section.cart {
+  background: #dddddd;
+}
+
+section.login {
+  background-image: url(/img/bg.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+  color: #EC191F;
+  min-height: calc(100vh-86px);
+}
+
+.color {
+  color: #F77A26;
+}
+.color:hover {
+  color: #F63822;
+}
+
+.login-box {
+  background-color: #fff;
+  border-radius: 35px;
+  box-shadow: 0px 13px 16px 0px #6d3232;
 }
