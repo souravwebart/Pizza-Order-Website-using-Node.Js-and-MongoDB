@@ -51,8 +51,9 @@
                     </ul>
          
                 <form class="d-flex menutextcart">
-                    <button class="navcart"><a href="#" class="inline-block px-4 py-2 rounded-full"><img
-                                src="/img/cart.png" alt="logo" width="20px" height="20px"></a></button>
+                   <a href="/cart" class="navcart inline-block px-4 py-2 rounded-full flex items-center">
+                        <span id="cartCounter" class="text-white font-bold pr-2"><%= session.cart ? session.cart.totalQty : '' %></span>
+                        <img src="/img/cart.png" alt="logo" width="20px" height="20px"></a>
                 </form>
             </div>
         </div>
