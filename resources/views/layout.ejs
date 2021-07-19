@@ -42,12 +42,20 @@
 
                 
                     <ul class="navbar-nav flex">
+                        <% if(user) { %>
+                        <li class="nav-item ml-2 menutext">
+                            <form id="logout" action='/logout' method="POST"
+                            <a  onClick="document.getElementById('logout').submit()" class="nav-link" href="#">Logout</a>
+                            </form>
+                        </li>
+                        <% } else { %>
                         <li class="nav-item ml-2 menutext">
                             <a class="nav-link" href="/register">Register</a>
                         </li>
                         <li class="nav-item ml-2 mr-2 menutext">
                             <a class="nav-link" href="/login">Login</a>
                         </li>
+                        <% } %>
                     </ul>
          
                 <form class="d-flex menutextcart">

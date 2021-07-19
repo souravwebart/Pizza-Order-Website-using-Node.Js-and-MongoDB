@@ -10,6 +10,7 @@ const flash = require('express-flash')
 const PORT = process.env.PORT || 3000
 const MongoStore = require('connect-mongo');
 const connectDB = require("./app/config/db");
+const passport = require('passport')
 
 
 
@@ -24,6 +25,8 @@ connectDB();
 //     collection: 'sessions'
 // })
 
+
+
 // Session config
 app.use(session({
     secret:process.env.COOKIE_SECRET,
@@ -36,13 +39,22 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24}
 
 }))
+//passport config
+const passportInit = require('./app/config/passport')
+passportInit (passport)
+app.use(passport.initialize());
+app.use(passport.session())
+
 
 app.use(flash())
 
-
+mongoose.set('useCreateIndex', true);
 
 // Assets
 app.use(express.static('public'));
+
+//urlencoded
+app.use(express.urlencoded( { extended: false } ));
 
 //JSON Call in express
 app.use(express.json());
@@ -51,6 +63,7 @@ app.use(express.json());
 
 app.use((req, res, next) => {
     res.locals.session = req.session
+    res.locals.user = req.user
     next()
 });
 

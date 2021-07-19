@@ -13,7 +13,10 @@
           </a>
         </p>
       </div>
-      <form class="mt-8 space-y-6 mx-6" action="#" method="POST">
+      <form class="mt-8 space-y-6 mx-6" action="/login" method="POST">
+        <% if(messages.error){ %>
+          <span class="text-red-500 text-sm"><%= messages.error %></span>
+        <% } %>
         <input type="hidden" name="remember" value="true">
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
