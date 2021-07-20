@@ -64,6 +64,7 @@ app.use(express.json());
 app.use((req, res, next) => {
     res.locals.session = req.session
     res.locals.user = req.user
+    res.locals.orders = req.orders
     next()
 });
 
