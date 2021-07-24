@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3000
 const MongoStore = require('connect-mongo');
 const connectDB = require("./app/config/db");
 const passport = require('passport')
+const Emitter = require('events')
 
 
 
@@ -25,7 +26,9 @@ connectDB();
 //     collection: 'sessions'
 // })
 
-
+//Event Emitter
+const eventEmitter = new Emitter()
+app.set('eventEmitter',eventEmitter)
 
 // Session config
 app.use(session({
@@ -76,6 +79,25 @@ app.set('view engine', 'ejs')
 require('./routes/web')(app)
 
 
-app.listen(PORT, () => {
-    console.log( `Listening on port ${PORT}`)
+const server = app.listen(PORT , () => {
+    console.log(`Listening on port ${PORT}`)
+})
+
+// socket
+
+const io = require('socket.io')(server)
+io.on('connection', (socket) => {
+      // Join
+      socket.on('join', (orderId) => {
+        socket.join(orderId)
+      })
+})
+
+eventEmitter.on('orderUpdated', (data) => {
+    io.to(`order_${data.id}`).emit('orderUpdated', data)
+})
+
+eventEmitter.on('orderPlaced', (data) => {
+    io.to('adminRoom').emit('orderPlaced', data)
+
 })

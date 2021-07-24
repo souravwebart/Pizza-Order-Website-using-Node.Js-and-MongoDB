@@ -9,7 +9,7 @@ function orderController(){
                 if(req.xhr){
                     return res.json(orders)
                 }else{
-                    return res.render('admin/orders')
+                    return res.render('admin/adminorders')
                 }
                 
             })
