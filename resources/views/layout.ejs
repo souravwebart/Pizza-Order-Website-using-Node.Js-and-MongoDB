@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
@@ -24,7 +26,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <img href="/" src="/img/logo.png" alt="logo" width="50px" height="50px">
+            <img src="/img/logo.png" alt="logo" width="150px" height="50px" href="/">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -36,10 +38,10 @@
                         <a class="nav-link active" href="/">Home</a>
                     </li>
                     <li class="nav-item ml-2 menutext">
-                        <a class="nav-link" href="#">Menu</a>
+                        <a class="nav-link" href="/menu">Menu</a>
                     </li>
                     <li class="nav-item ml-2 menutext">
-                        <a class="nav-link" href="#">Offers</a>
+                        <a class="nav-link" href="/offer">Offers</a>
                     </li>
                 </ul>
 
@@ -51,6 +53,12 @@
                             <a  onClick="document.getElementById('logout').submit()" class="nav-link" href="#">Logout</a>
                             </form>
                         </li>
+                        <li class="nav-item ml-2 menutext">
+                            <a class="nav-link" href="/customer/orders">My order</a>
+                        </li>
+                        <li class="nav-item ml-2 menutext">
+                            <a class="nav-link" href="/admin/adminorders">Admin Order</a>
+                        </li>
                         <% } else { %>
                         <li class="nav-item ml-2 menutext">
                             <a class="nav-link" href="/register">Register</a>
@@ -59,11 +67,10 @@
                             <a class="nav-link" href="/login">Login</a>
                         </li>
                         <% } %>
-                    </ul>
          
                 <form class="d-flex menutextcart">
                    <a href="/cart" class="navcart inline-block px-4 py-2 rounded-full flex items-center">
-                        <span id="cartCounter" class="text-white font-bold pr-2"><%= session.cart ? session.cart.totalQty : '' %></span>
+                        <span id="cartCounter" class="text-white font-bold pr-2"><%= session.cart ? session.cart.totalQty : 'Empty' %></span>
                         <img src="/img/cart.png" alt="logo" width="20px" height="20px"></a>
                 </form>
             </div>
@@ -86,6 +93,44 @@
         </div>
     </nav> -->
     <%- body %>
+    
+
+<footer class="new_footer_area bg_color">
+    <div class="new_footer_top container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 text-center">
+                    <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18 text-center txtclr">Get in Touch</h3>
+                        <p class="text-center txtclr">Don’t miss any updates of our new templates and extensions.!</p>
+                        <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
+                            <input type="text" name="EMAIL" class="form-control memail w-48 text-center mx-auto" placeholder="Email">
+                            <button class="btn btn_get  mx-auto text-center" type="submit">Subscribe</button>
+                            <p class="mchimp-errmessage" style="display: none;"></p>
+                            <p class="mchimp-sucmessage" style="display: none;"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bg">
+            <div class="footer_bg_one"></div>
+            <div class="footer_bg_two"></div>
+        </div>
+    </div>
+    <div class="footer_bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-sm-7">
+                    <p class="mb-0 f_400 txtclr">© copyright 2021</p>
+                </div>
+                <div class="col-lg-6 col-sm-5 text-right">
+                    <p class="txtclr">Developed by Sourav Gupta<i class="icon_heart"></i> in <a href="https://souravwebart.tech/">Souravwebart</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
     <script src="/socket.io/socket.io.js"></script>
         <script src="/js/app.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

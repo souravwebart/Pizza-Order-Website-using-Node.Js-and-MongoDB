@@ -22,6 +22,10 @@ function initRoutes(app){
 
     app.get('/', homeController().index)
 
+    app.get('/menu', homeController().menudetails)
+
+    app.get('/offer', homeController().offerIndex)
+
     app.get('/cart', cartController().index)
 
     app.get('/login', guest, authController().login)
@@ -36,6 +40,9 @@ function initRoutes(app){
 
     app.post('/update-cart', cartController().update)
 
+    app.post('/update-Quantity', cartController().quantity)
+
+
     
 
     // customer routes
@@ -45,6 +52,11 @@ function initRoutes(app){
     app.get('/customer/orders', auth, orderController().index)
 
     app.get('/customer/orders/:id', auth, orderController().show)
+
+
+
+
+    
 
 
     //Admin routes

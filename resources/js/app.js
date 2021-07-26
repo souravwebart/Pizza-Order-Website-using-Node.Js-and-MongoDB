@@ -1,45 +1,38 @@
 import axios from 'axios'
-import Noty from 'noty'
-import moment from 'moment'
+ import Noty from 'noty'
+ import { adminOrder } from './admin'
+ import moment from 'moment'
 
-const initAdmin = require('./admin');
-
-let addTocart = document.querySelectorAll('.add-to-cart');
+let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
 
-function updateCart(pizza){
-
+function updateCart(pizza) {
     axios.post('/update-cart', pizza).then(res => {
         cartCounter.innerText = res.data.totalQty
-
-    new Noty({
-        type:'success',
-        timeout: 1000,
-        progressBar: false,
-        text: "Item added to cart"
+        new Noty({
+            type: 'success',
+            timeout: 1000,
+            text: 'Item added to cart',
+            progressBar: false,
         }).show();
-
     }).catch(err => {
         new Noty({
-            type:'error',
+            type: 'error',
             timeout: 1000,
+            text: 'Something went wrong',
             progressBar: false,
-            text: "something went wrong"
-            }).show();
+        }).show();
     })
-
 }
 
-addTocart.forEach((btn) => {
-btn.addEventListener('click', (e) => {
-    let pizza = JSON.parse(btn.dataset.pizza)
-    updateCart(pizza);
-
+addToCart.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        let pizza = JSON.parse(btn.dataset.pizza)
+        updateCart(pizza)
+    })
 })
-})
 
-//Remove alert message after secods
-
+// Remove alert message after X seconds
 const alertMsg = document.querySelector('#success-alert')
 if(alertMsg) {
     setTimeout(() => {
@@ -47,39 +40,40 @@ if(alertMsg) {
     }, 2000)
 }
 
-// change order status
-let statusorder = document.querySelectorAll('.status_line')
-let hiddenInput = document.querySelector('#hiddenInput');
-let order = hiddenInput ? hiddenInput.value : null;
-order = JSON.parse(order)
-let time = document.createElement('small');
 
-function updateStatus(order){
-    statusorder.forEach((status) => {
+
+// Change order status
+let statuses = document.querySelectorAll('.status_line')
+let hiddenInput = document.querySelector('#hiddenInput')
+let order = hiddenInput ? hiddenInput.value : null
+order = JSON.parse(order)
+let time = document.createElement('small')
+
+function updateStatus(order) {
+    statuses.forEach((status) => {
         status.classList.remove('step-completed')
-        status.classList.remove('current-status')
+        status.classList.remove('current')
     })
     let stepCompleted = true;
-    statusorder.forEach((status) => {
-        let dataProp = status.dataset.status
-        if(stepCompleted){
+    statuses.forEach((status) => {
+       let dataProp = status.dataset.status
+       if(stepCompleted) {
             status.classList.add('step-completed')
-
-        }
-        if(dataProp === order.status){
-            stepCompleted = false;
+       }
+       if(dataProp === order.status) {
+            stepCompleted = false
             time.innerText = moment(order.updatedAt).format('hh:mm A')
-            status.appendChild(time);
-            if(status.nextElementSibling){
-                status.nextElementSibling.classList.add('current-status')
-            }
-        }
+            status.appendChild(time)
+           if(status.nextElementSibling) {
+            status.nextElementSibling.classList.add('current')
+           }
+       }
     })
-
 
 }
 
 updateStatus(order);
+
 
 // Socket
 let socket = io()
@@ -90,7 +84,7 @@ if(order) {
 }
 let adminAreaPath = window.location.pathname
 if(adminAreaPath.includes('admin')) {
-    initAdmin(socket)
+    adminOrder(socket)
     socket.emit('join', 'adminRoom')
 }
 
@@ -107,4 +101,3 @@ socket.on('orderUpdated', (data) => {
         progressBar: false,
     }).show();
 })
-

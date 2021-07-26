@@ -1,13 +1,12 @@
-const axios = require('axios');
-const moment = require('moment');
+import axios from 'axios'
+import moment from 'moment'
 import Noty from 'noty'
 
-
-function initAdmin(socket) {
+export function adminOrder(socket) {
     const orderTableBody = document.querySelector('#orderTableBody')
     let orders = []
     let markup
-	
+
     axios.get('/admin/adminorders', {
         headers: {
             "X-Requested-With": "XMLHttpRequest"
@@ -39,10 +38,9 @@ function initAdmin(socket) {
                 </td>
                 <td class="border px-4 py-2">${ order.customerId.name }</td>
                 <td class="border px-4 py-2">${ order.address }</td>
-                <td class="border px-4 py-2">${ order.phone }</td>
                 <td class="border px-4 py-2">
                     <div class="inline-block relative w-64">
-                        <form action="/admin/adminorders/status" method="POST">
+                        <form action="/admin/order/status" method="POST">
                             <input type="hidden" name="orderId" value="${ order._id }">
                             <select name="status" onchange="this.form.submit()"
                                 class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
@@ -74,22 +72,23 @@ function initAdmin(socket) {
                 <td class="border px-4 py-2">
                     ${ moment(order.createdAt).format('hh:mm A') }
                 </td>
+                <td class="border px-4 py-2">
+                    ${ order.paymentStatus ? 'paid' : 'Not paid' }
+                </td>
             </tr>
         `
         }).join('')
-		}
-        // Socket
-		socket.io('orderPlaced', (order) => {
-            new Noty({
-                type: 'success',
-                timeout: 1000,
-                text: 'New ordered Received',
-                progressBar: false,
-            }).show();
-            orders.unshift(order)
-            orderTableBody.innerHTML = ''
-            orderTableBody.innerHTML = generateMarkup(orders)
-        })
+    }
+    // Socket
+    socket.on('orderPlaced', (order) => {
+        new Noty({
+            type: 'success',
+            timeout: 1000,
+            text: 'New order!',
+            progressBar: false,
+        }).show();
+        orders.unshift(order)
+        orderTableBody.innerHTML = ''
+        orderTableBody.innerHTML = generateMarkup(orders)
+    })
 }
-
-module.exports = initAdmin
