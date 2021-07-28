@@ -6,7 +6,7 @@ const expressLayout = require('express-ejs-layouts')
 const path = require('path')
 const mongoose = require('mongoose')
 const session = require('express-session');
-const MongoStore = require('connect-mongo').default;
+var MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('express-flash')
 const PORT = process.env.PORT || 3000
 const connectDB = require("./app/config/db");
@@ -31,15 +31,38 @@ const eventEmitter = new Emitter()
 app.set('eventEmitter',eventEmitter)
 
 // Session config
-app.use(session({
-    secret:process.env.COOKIE_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: process.env.DATABASE}),
-    //24 hours
-    cookie: { maxAge: 1000 * 60 * 60 * 24}
+var store = new MongoDBStore({
+    uri: 'mongodb+srv://user-123:<demo123>@cluster0.es8d3.mongodb.net/pizza?retryWrites=true',
+    collection: 'session'
+  });
 
-}))
+  // Catch errors
+store.on('error', function(error) {
+    console.log(error);
+  });
+  
+  app.use(require('express-session')({
+    secret: process.env.COOKIE_SECRET,
+    cookie: {
+        cookie: { maxAge: 1000 * 60 * 60 * 24}
+    },
+    store: store,
+    // Boilerplate options, see:
+    // * https://www.npmjs.com/package/express-session#resave
+    // * https://www.npmjs.com/package/express-session#saveuninitialized
+    resave: true,
+    saveUninitialized: true
+  }));
+  
+// app.use(session({
+//     secret:process.env.COOKIE_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     store: MongoStore.create({ mongoUrl: process.env.DATABASE}),
+//     //24 hours
+//     cookie: { maxAge: 1000 * 60 * 60 * 24}
+
+// }))
 //passport config
 const passportInit = require('./app/config/passport')
 passportInit (passport)
