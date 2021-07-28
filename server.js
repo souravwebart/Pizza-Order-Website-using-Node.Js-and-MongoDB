@@ -75,6 +75,10 @@ app.set('views', path.join(__dirname,'/resources/views'))
 app.set('view engine', 'ejs')
 
 require('./routes/web')(app)
+app.use((res, req)=>{
+    res.status(404).render('404-page')
+
+});
 
 
 const server = app.listen(PORT , () => {
