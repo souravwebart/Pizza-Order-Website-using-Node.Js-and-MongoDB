@@ -5,10 +5,10 @@ const ejs = require('ejs')
 const expressLayout = require('express-ejs-layouts')
 const path = require('path')
 const mongoose = require('mongoose')
-const session = require('express-session')
+const session = require('express-session');
+const MongoStore = require('connect-mongo').default;
 const flash = require('express-flash')
 const PORT = process.env.PORT || 3000
-const MongoStore = require('connect-mongo');
 const connectDB = require("./app/config/db");
 const passport = require('passport')
 const Emitter = require('events')
@@ -35,9 +35,7 @@ app.use(session({
     secret:process.env.COOKIE_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({
-        mongoUrl: process.env.MONGO_CONNECTION_URI
-    }),
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_CONNECTION_URI}),
     //24 hours
     cookie: { maxAge: 1000 * 60 * 60 * 24}
 
