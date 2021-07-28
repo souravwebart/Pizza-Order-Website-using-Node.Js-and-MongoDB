@@ -1,0 +1,286 @@
+[{
+  "_id": {
+    "$oid": "60f68de3c42f261e3428b36c"
+  },
+  "paymentType": "COD",
+  "paymentStatus": false,
+  "status": "order_placed",
+  "customerId": {
+    "$oid": "60f42a63f9c3593634b63195"
+  },
+  "items": {
+    "5eee6671a27a66807cf2bea3": {
+      "item": {
+        "_id": "5eee6671a27a66807cf2bea3",
+        "name": "Marinara",
+        "image": "pizza.png",
+        "price": 300,
+        "size": "medium"
+      },
+      "qty": 1
+    },
+    "5eee651f739f8c674fd736ee": {
+      "item": {
+        "_id": "5eee651f739f8c674fd736ee",
+        "name": "Margherita",
+        "image": "pizza.png",
+        "price": 250,
+        "size": "small"
+      },
+      "qty": 1
+    },
+    "5eee6692a27a66807cf2bea4": {
+      "item": {
+        "_id": "5eee6692a27a66807cf2bea4",
+        "name": "Carbonara",
+        "image": "pizza.png",
+        "price": 200,
+        "size": "small"
+      },
+      "qty": 1
+    },
+    "5eee66a5a27a66807cf2bea5": {
+      "item": {
+        "_id": "5eee66a5a27a66807cf2bea5",
+        "name": "Americana",
+        "image": "pizza.png",
+        "price": 500,
+        "size": "large"
+      },
+      "qty": 1
+    }
+  },
+  "phone": "9008968975",
+  "address": "test",
+  "createdAt": {
+    "$date": "2021-07-20T08:48:35.176Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-25T14:20:15.843Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60f6ba89114fbd21307e8964"
+  },
+  "paymentType": "COD",
+  "paymentStatus": false,
+  "status": "prepared",
+  "customerId": {
+    "$oid": "60f42a63f9c3593634b63195"
+  },
+  "items": {
+    "5eee6671a27a66807cf2bea3": {
+      "item": {
+        "_id": "5eee6671a27a66807cf2bea3",
+        "name": "Marinara",
+        "image": "pizza.png",
+        "price": 300,
+        "size": "medium"
+      },
+      "qty": 1
+    },
+    "5eee651f739f8c674fd736ee": {
+      "item": {
+        "_id": "5eee651f739f8c674fd736ee",
+        "name": "Margherita",
+        "image": "pizza.png",
+        "price": 250,
+        "size": "small"
+      },
+      "qty": 1
+    },
+    "5eee6692a27a66807cf2bea4": {
+      "item": {
+        "_id": "5eee6692a27a66807cf2bea4",
+        "name": "Carbonara",
+        "image": "pizza.png",
+        "price": 200,
+        "size": "small"
+      },
+      "qty": 1
+    },
+    "5eee66a5a27a66807cf2bea5": {
+      "item": {
+        "_id": "5eee66a5a27a66807cf2bea5",
+        "name": "Americana",
+        "image": "pizza.png",
+        "price": 500,
+        "size": "large"
+      },
+      "qty": 1
+    }
+  },
+  "phone": "9008968975",
+  "address": "test",
+  "createdAt": {
+    "$date": "2021-07-20T11:59:05.362Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-24T16:09:20.520Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60f6c0b669c29a2730d74226"
+  },
+  "paymentType": "COD",
+  "paymentStatus": false,
+  "status": "confirmed",
+  "customerId": {
+    "$oid": "60f42a63f9c3593634b63195"
+  },
+  "items": {
+    "5eee6671a27a66807cf2bea3": {
+      "item": {
+        "_id": "5eee6671a27a66807cf2bea3",
+        "name": "Marinara",
+        "image": "pizza.png",
+        "price": 300,
+        "size": "medium"
+      },
+      "qty": 2
+    },
+    "5eee651f739f8c674fd736ee": {
+      "item": {
+        "_id": "5eee651f739f8c674fd736ee",
+        "name": "Margherita",
+        "image": "pizza.png",
+        "price": 250,
+        "size": "small"
+      },
+      "qty": 1
+    },
+    "5eee6692a27a66807cf2bea4": {
+      "item": {
+        "_id": "5eee6692a27a66807cf2bea4",
+        "name": "Carbonara",
+        "image": "pizza.png",
+        "price": 200,
+        "size": "small"
+      },
+      "qty": 2
+    },
+    "5eee66a5a27a66807cf2bea5": {
+      "item": {
+        "_id": "5eee66a5a27a66807cf2bea5",
+        "name": "Americana",
+        "image": "pizza.png",
+        "price": 500,
+        "size": "large"
+      },
+      "qty": 1
+    }
+  },
+  "phone": "7085548881",
+  "address": "6, IGM hospital lane",
+  "createdAt": {
+    "$date": "2021-07-20T12:25:26.879Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-24T15:17:06.178Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60f7f2c38717c3153cc50e3f"
+  },
+  "paymentType": "COD",
+  "paymentStatus": false,
+  "status": "completed",
+  "customerId": {
+    "$oid": "60f42a63f9c3593634b63195"
+  },
+  "items": {
+    "5eee6671a27a66807cf2bea3": {
+      "item": {
+        "_id": "5eee6671a27a66807cf2bea3",
+        "name": "Marinara",
+        "image": "pizza.png",
+        "price": 300,
+        "size": "medium"
+      },
+      "qty": 2
+    },
+    "5eee651f739f8c674fd736ee": {
+      "item": {
+        "_id": "5eee651f739f8c674fd736ee",
+        "name": "Margherita",
+        "image": "pizza.png",
+        "price": 250,
+        "size": "small"
+      },
+      "qty": 1
+    }
+  },
+  "phone": "9008968975",
+  "address": "6, Igm hospital lane",
+  "createdAt": {
+    "$date": "2021-07-21T10:11:15.347Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-24T15:13:17.622Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60ff000dd15c3a2324098983"
+  },
+  "paymentType": "COD",
+  "paymentStatus": false,
+  "status": "order_placed",
+  "customerId": {
+    "$oid": "60f7c5f8f9683baba1f6c950"
+  },
+  "items": {
+    "5eee651f739f8c674fd736ee": {
+      "item": {
+        "_id": "5eee651f739f8c674fd736ee",
+        "name": "Margherita",
+        "image": "pizza.png",
+        "price": 250,
+        "size": "small"
+      },
+      "qty": 1
+    },
+    "5eee6671a27a66807cf2bea3": {
+      "item": {
+        "_id": "5eee6671a27a66807cf2bea3",
+        "name": "Marinara",
+        "image": "pizza.png",
+        "price": 300,
+        "size": "medium"
+      },
+      "qty": 1
+    },
+    "5eee6692a27a66807cf2bea4": {
+      "item": {
+        "_id": "5eee6692a27a66807cf2bea4",
+        "name": "Carbonara",
+        "image": "pizza.png",
+        "price": 200,
+        "size": "small"
+      },
+      "qty": 1
+    },
+    "5eee66a5a27a66807cf2bea5": {
+      "item": {
+        "_id": "5eee66a5a27a66807cf2bea5",
+        "name": "Americana",
+        "image": "pizza.png",
+        "price": 500,
+        "size": "large"
+      },
+      "qty": 1
+    }
+  },
+  "phone": "0123456789",
+  "address": "test",
+  "createdAt": {
+    "$date": "2021-07-26T18:33:49.352Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-26T18:33:49.352Z"
+  },
+  "__v": 0
+}]
